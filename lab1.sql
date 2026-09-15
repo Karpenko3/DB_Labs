@@ -29,40 +29,40 @@ VALUES ('Aurora Borealis', 'Explorer',  'Orion Arm',   120, 2231, 87.50),
        ('Solar Anvil',     'Cruiser',   'Orion Arm',   205, 2226, 22.15);
 
 
+--Витягує абсолютно всі дані (всі стовпці та всі рядки) з таблиці starship (Повний реєстр).
 SELECT * FROM starship;
  
-
+-- Витягує лише три стовпці і тимчасово змінює їхні заголовки під час виведення на ship, class та crew за допомогою оператора AS.
 SELECT ship_name   AS ship,
        ship_class  AS class,
        crew_size   AS crew
 FROM starship;
 
-
+-- Виводить список унікальних класів кораблів, прибираючи всі повторювані значення.
 SELECT DISTINCT ship_class FROM starship;
  
-
+-- Виводить унікальні комбінації (пари) класу корабля та його сектору приписки.
 SELECT DISTINCT ship_class, home_sector
 FROM starship;
 
-
+-- Сортує список кораблів за розміром екіпажу від найбільшого до найменшого (DESC — за спаданням).
 SELECT ship_name, crew_size
 FROM starship
 ORDER BY crew_size DESC;
  
-
+-- Сортує кораблі спочатку за класом (за алфавітом), а всередині однакових класів — за роком запуску від найновішого до найстарішого (DESC).
 SELECT ship_name, ship_class, launch_year
 FROM starship
 ORDER BY ship_class ASC, launch_year DESC;
 
-
+-- Виводить 3 кораблі з найбільшим запасом палива (сортує за спаданням палива і залишає лише перші 3 результати завдяки LIMIT).
 SELECT ship_name, fuel_reserve
 FROM starship
 ORDER BY fuel_reserve DESC
 LIMIT 3;
  
-
+-- Пропускає перші 3 кораблі (OFFSET 3) з відсортованого за паливом списку і виводить наступні 3 (тобто рядки 4, 5 та 6).
 SELECT ship_name, fuel_reserve
 FROM starship
 ORDER BY fuel_reserve DESC
 LIMIT 3 OFFSET 3;
-
