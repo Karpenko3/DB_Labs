@@ -76,7 +76,7 @@ FROM survey_probe
 WHERE launch_year BETWEEN 2230 AND 2238;
 
 -- Демонструє помилковий спосіб пошуку відсутніх значень (поверне порожній результат, оскільки з NULL не можна використовувати знак =).
-SELECT probe_name FROM survey_probe WHERE orbit_km = NULL;
+SELECT probe_name FROM survey_probe WHERE orbit_km = 12;
  
 -- Правильний спосіб знаходження відсутніх значень: виводить зонди, з якими жодного разу не було зв'язку (дата NULL).
 SELECT probe_name, target_body
